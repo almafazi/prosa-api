@@ -92,8 +92,7 @@ function getResultFromURI(url, options, apiKey, callBack) {
     .then(res => Promise.all([res, res.json()]))
     .then(([res, body]) => {
       if (body.status === "error") throw new ProsaAPIError(body);
-      // 'showHeaders' option can be used for clients to debug response headers
-      // response will be in form of { headers, body }
+      
       if (options && options.showHeaders) {
         if (useCallback) return callBack(null, { headers: res.headers, body });
         return { headers: res.headers, body };
